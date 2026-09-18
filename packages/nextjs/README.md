@@ -14,11 +14,11 @@ Pantalla de prueba de **scaffold-arc**. En el header: mascota (sin nombre person
 | `zh` | 中文 |
 | `ar` | العربية (RTL) |
 
-Tres historias (traducidas):
+Tres ejemplos (traducidos):
 
 1. **Te pagan o pagás en USDC** — sueldo, factura o café; un solo saldo en dólares.
 2. **¿Te alcanzó el pago?** — template de Ethereum vs pago completo en Arc.
-3. **Mandás un pago: ¿cuánto gas?** — fee en USDC, con aviso si estás bajo el piso de 20 Gwei.
+3. **Mandás un pago: ¿cuánto gas en dólares?** — costo de enviar la transacción en USDC; aviso si el precio del gas queda bajo el mínimo de 20 Gwei.
 
 Capturas (desktop 1440 + móvil 390): ver [`docs/screenshots/`](../../docs/screenshots/).
 

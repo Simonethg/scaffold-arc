@@ -15,7 +15,7 @@ Si copiás un template de Ethereum “tal cual”, podés:
 - ver **el doble de dinero** en pantalla (porque USDC se muestra de dos formas que son el mismo saldo), o
 - mandar transacciones que **nunca aparecen** (porque Arc exige un mínimo de fee).
 
-Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** con historias de fintech LatAm — marca [Simonethg](https://simonethg.com) (mascota en el header, sin wordmark de nombre).
+Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** con ejemplos de fintech LatAm — marca [Simonethg](https://simonethg.com) (mascota en el header, sin wordmark de nombre).
 
 ### Idiomas (selector de banderas)
 
@@ -43,11 +43,11 @@ Playground en `http://localhost:3000` (después de `yarn nextjs:dev`):
 
 ### Casos de uso en el playground (sin jerga)
 
-| Historia en la UI | Qué aprendés |
+| Ejemplo en la UI | Qué aprendés |
 |---|---|
 | **Te pagan o pagás en USDC** | Sueldo 50 USDC, factura 12,50 USDC o un café: un **solo saldo** en dólares. |
 | **¿Te alcanzó el pago?** | El template de Ethereum cree que alcanza con una fracción; en Arc te quedás corto si no convertís bien. |
-| **Mandás un pago: ¿cuánto gas?** | El fee se muestra en **USDC / dólares**. Debajo del piso de 20 Gwei la tx puede desaparecer. |
+| **Mandás un pago: ¿cuánto gas en dólares?** | El **costo de enviar** la transacción se muestra en **USDC / dólares**. Si el precio del gas queda bajo el mínimo de 20 Gwei, la transacción puede desaparecer sin confirmación. |
 
 Hoy **no hace falta wallet**: es una calculadora de prueba. Conectar MetaMask llega en el siguiente entregable.
 
