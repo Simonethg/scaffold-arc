@@ -8,8 +8,7 @@ pragma solidity ^0.8.24;
 ///           - ERC-20 interface at 0x3600...0000 (`balanceOf`, `transfer`):  6 decimals
 ///         There is no wrapped USDC. Mixing the two units is off by exactly
 ///         10^12 — the single most common bug when porting Ethereum code.
-///         This library is the D1 seed; D2 expands it into the full Usdc.sol
-///         (balance reads, safe transfers, fee math).
+///         Prefer {Usdc} for balance reads, transfers, and fee math.
 library UsdcUnits {
     /// @dev Decimals used by native gas accounting and `msg.value`.
     uint8 internal constant NATIVE_DECIMALS = 18;

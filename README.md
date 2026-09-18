@@ -89,14 +89,20 @@ packages/
 deployments/    # canonical Arc contract addresses, importable JSON
 ```
 
-The only Solidity shipped today is [`UsdcUnits`](packages/foundry/src/UsdcUnits.sol) — the seed of the USDC decimal-safety library — with [tests](packages/foundry/test/UsdcUnits.t.sol) that encode footgun #1 as executable documentation.
+The Solidity shipped today:
+
+- [`UsdcUnits`](packages/foundry/src/UsdcUnits.sol) — pure 18↔6 decimal conversion
+- [`Usdc`](packages/foundry/src/Usdc.sol) — balance reads, transfer guards, fee math in ERC-20 units
+- [`NaiveEthereumPort`](packages/foundry/src/examples/NaiveEthereumPort.sol) — intentionally wrong helpers used only in tests to prove why ETH-style ports break on Arc
+
+Run `yarn foundry:test` to see both the safe API and the naive-port failure documentation.
 
 ## Roadmap
 
 Daily pushes; one usable deliverable per week.
 
 - [x] **D1** — Monorepo, Arc network config, footguns README, decimal-safety seed
-- [ ] **D2** — `Usdc.sol` library + tests that fail on naive Ethereum ports
+- [x] **D2** — `Usdc.sol` library + tests that fail on naive Ethereum ports
 - [ ] **D3** — Next.js + wagmi: wallet connect, single USDC balance
 - [ ] **D4** — Gas helper: 20 Gwei floor guard, fees displayed in USD
 - [ ] **D5** — `MemoPayment` example: pay USDC with an invoice ID via the predeployed Memo contract
