@@ -10,6 +10,9 @@
   "scripts": {
     "foundry:build": "forge build --root packages/foundry",
     "foundry:test": "forge test --root packages/foundry -vv",
+    "nextjs:dev": "MEAWALLET_NEXUS_AUTH=${MEAWALLET_NEXUS_AUTH:-x} yarn workspace @scaffold-arc/nextjs dev",
+    "nextjs:build": "MEAWALLET_NEXUS_AUTH=${MEAWALLET_NEXUS_AUTH:-x} yarn workspace @scaffold-arc/nextjs build",
+    "screenshots": "MEAWALLET_NEXUS_AUTH=${MEAWALLET_NEXUS_AUTH:-x} node scripts/capture-playground.mjs",
     "test": "yarn foundry:test"
   },
   "repository": {

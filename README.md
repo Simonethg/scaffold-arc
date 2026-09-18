@@ -1,120 +1,125 @@
 # scaffold-arc
 
-**Fork this to ship on Arc.** Your Ethereum template will not survive here unchanged — on Arc the native token *is* USDC, and copying EVM boilerplate written for ETH will silently double your balances on screen or strand your transactions in the mempool.
+**Powered by [AcademiaQA.com](https://academiaqa.com)**
 
-scaffold-arc is a permissionless starter for [Arc](https://docs.arc.io/), Circle's L1 where USDC is the native gas token. No Circle API key, no Supabase, no managed wallets required: MetaMask + the public faucet is enough to go from clone to deployed contract.
+---
 
-> Status: early and moving daily. `v0.1` (forkable template with a working Memo payment example on mainnet) lands this week. See the [roadmap](#roadmap) for what exists today vs. what is coming.
+## Para todos
 
-## Why your Ethereum template will not work
+### Qué es (en lenguaje simple)
 
-Arc is EVM-compatible (Osaka baseline) — Solidity, Foundry, viem and wagmi all work. What breaks is every assumption about the native token. These are the four footguns this scaffold exists to neutralize:
+**scaffold-arc** es un kit de arranque para construir apps en [Arc](https://docs.arc.io/), la blockchain de Circle donde el gas se paga en **USDC** (dólares digitales), no en ETH.
 
-### 1. USDC has 18 decimals natively and 6 on the ERC-20 interface — same funds
+Si copiás un template de Ethereum “tal cual”, podés:
 
-`msg.value` and the native balance use **18 decimals**. `USDC.balanceOf()` (ERC-20 at `0x3600…0000`) returns **6 decimals**. They are two views over the **same balance** — there is no wrapped USDC on Arc.
+- ver **el doble de dinero** en pantalla (porque USDC se muestra de dos formas que son el mismo saldo), o
+- mandar transacciones que **nunca aparecen** (porque Arc exige un mínimo de fee).
 
-```solidity
-// WRONG (naive Ethereum port): off by 10^12
-require(usdc.balanceOf(user) >= msg.value, "insufficient");
+Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** para verificarlas a mano — con la marca [Simonethg](https://simonethg.com).
 
-// The ERC-20 view also truncates sub-USDC dust:
-// a native balance of 0.0000009 USDC reads as balanceOf == 0.
-```
+### Capturas de la UI
 
-Never mix the two units in pool math, LTV checks, or balance displays. Never render "native USDC" and "ERC-20 USDC" as two balance rows — that shows users double their money.
+Playground en `http://localhost:3000` (después de `yarn nextjs:dev`):
 
-### 2. The mempool enforces a 20 Gwei floor — below it, transactions vanish
+![Playground USDC — escritorio](docs/screenshots/playground-usdc-desktop.png)
 
-Transactions with `maxFeePerGas < 20 gwei` are **silently dropped**: no error, no receipt, never mined. Foundry, ethers and viem defaults can land below the floor on a quiet chain.
+![Playground USDC — móvil](docs/screenshots/playground-usdc-mobile.png)
 
-```bash
-forge script script/Deploy.s.sol --rpc-url arc_testnet --broadcast --with-gas-price 20gwei
-```
+> Si las imágenes aún no están en el clone, mirá [`docs/screenshots/README.md`](docs/screenshots/README.md) para generarlas. La UI existe igual.
 
-Fees are denominated in USDC, so show them to users in dollars (target: ~$0.001 per ERC-20 transfer), not in Gwei.
+### Funciones importantes (sin jerga)
 
-### 3. Value transfers can revert for reasons that do not exist on Ethereum
+| Qué ves en la UI | Para qué sirve |
+|---|---|
+| **Monto en USDC** | Convierte “1 USDC” a las dos formas internas (6 y 18 decimales) y te recuerda mostrar **un solo saldo**. |
+| **Port ingenuo vs seguro** | Muestra por qué una comparación “estilo Ethereum” aceptaría un pago ridículamente chico. |
+| **Fee en USDC** | Estima el costo del gas en dólares y avisa si estás bajo el piso de **20 Gwei** (tx en limbo). |
 
-- Sending value to `address(0)` **reverts** (burning the native USDC is forbidden).
-- Transfers to or from **blocklisted addresses revert at runtime** — and a reverted blocklist transfer still consumes gas.
-- Sending value to a contract that already self-destructed **reverts** (treated as a forbidden burn).
-- `SELFDESTRUCT` on a contract holding USDC **moves that USDC** to the beneficiary (it is the account's native balance, not an ERC-20 entry).
+Hoy **no hace falta wallet**: es una calculadora de prueba. Conectar MetaMask llega en el siguiente entregable.
 
-Testnet seeds a known blocklisted address (`0x7099…79C8`, index 1 of the standard test mnemonic) so you can exercise these reverts — it is in [`deployments/addresses.json`](deployments/addresses.json).
+---
 
-### 4. No onchain randomness, no blobs, instant finality
+## Para developers
 
-`PREVRANDAO` always returns `0` (use a VRF or oracle). Blob transactions (EIP-4844) are rejected. Finality is deterministic in under a second: one confirmation is final, no reorg handling needed — fire your webhooks immediately.
-
-Full reference: [Arc EVM differences](https://docs.arc.io/arc/references/evm-differences).
-
-## Network details
-
-| | Arc Mainnet | Arc Testnet |
-|---|---|---|
-| Chain ID | `5042` | `5042002` |
-| RPC | `https://rpc.mainnet.arc.io` | `https://rpc.testnet.arc.io` |
-| Explorer | [explorer.arc.io](https://explorer.arc.io) | [testnet.arcscan.app](https://testnet.arcscan.app) |
-| Gas token | USDC (native 18d / ERC-20 6d) | USDC (native 18d / ERC-20 6d) |
-| Faucet | — | [faucet.circle.com](https://faucet.circle.com) |
-| viem chain | `import { arc } from "viem/chains"` | `import { arcTestnet } from "viem/chains"` |
-
-Canonical predeployed contracts (Memo, Multicall3From, Permit2, Multicall3, CREATE2 factory, USDC, EURC) live in [`deployments/addresses.json`](deployments/addresses.json) — import them instead of copy-pasting from docs.
-
-## Quickstart
+### Quickstart
 
 Requirements: Node 20+, Yarn, [Foundry](https://getfoundry.sh).
 
 ```bash
 git clone https://github.com/Simonethg/scaffold-arc.git
 cd scaffold-arc
+yarn
+yarn foundry:test      # 17 tests Solidity
+yarn nextjs:dev        # UI → http://localhost:3000
+```
+
+Forge only:
+
+```bash
 yarn foundry:build
 yarn foundry:test
 ```
 
-To deploy against Arc Testnet you will need testnet USDC for gas: request it at [faucet.circle.com](https://faucet.circle.com) (select Arc Testnet), then:
-
-```bash
-cp packages/foundry/.env.example packages/foundry/.env   # add your PRIVATE_KEY
-```
-
-## What's inside
+### What exists today
 
 ```
 packages/
-├── foundry/    # Solidity contracts, Arc-aware config, decimal-safety tests
-├── sdk/        # (D2+) parseUsdc, gas floor guard, fee-in-USD, Memo encoding, arc:pay spec
-└── nextjs/     # (D3+) wallet UI with a SINGLE USDC balance and fees shown in USD
-deployments/    # canonical Arc contract addresses, importable JSON
+├── foundry/    # UsdcUnits + Usdc libs, naive-port tests
+├── nextjs/     # Simonethg playground (USDC conversion / naive / fee)
+└── sdk/        # placeholder
+deployments/    # canonical Arc addresses JSON
+docs/screenshots/
 ```
 
-The Solidity shipped today:
+Solidity:
 
-- [`UsdcUnits`](packages/foundry/src/UsdcUnits.sol) — pure 18↔6 decimal conversion
-- [`Usdc`](packages/foundry/src/Usdc.sol) — balance reads, transfer guards, fee math in ERC-20 units
-- [`NaiveEthereumPort`](packages/foundry/src/examples/NaiveEthereumPort.sol) — intentionally wrong helpers used only in tests to prove why ETH-style ports break on Arc
+- [`UsdcUnits`](packages/foundry/src/UsdcUnits.sol) — 18↔6 conversion
+- [`Usdc`](packages/foundry/src/Usdc.sol) — balances, transfer guards, fee math
+- [`NaiveEthereumPort`](packages/foundry/src/examples/NaiveEthereumPort.sol) — wrong patterns for tests only
 
-Run `yarn foundry:test` to see both the safe API and the naive-port failure documentation.
+UI: [`packages/nextjs`](packages/nextjs) — Spanish playground, `data-testid`, brand tokens from simonethg.com.
 
-## Roadmap
+### Network details
 
-Daily pushes; one usable deliverable per week.
+| | Arc Mainnet | Arc Testnet |
+|---|---|---|
+| Chain ID | `5042` | `5042002` |
+| RPC | `https://rpc.mainnet.arc.io` | `https://rpc.testnet.arc.io` |
+| Explorer | [explorer.arc.io](https://explorer.arc.io) | [testnet.arcscan.app](https://testnet.arcscan.app) |
+| Gas token | USDC (native 18d / ERC-20 6d) | same |
+| Faucet | — | [faucet.circle.com](https://faucet.circle.com) |
 
-- [x] **D1** — Monorepo, Arc network config, footguns README, decimal-safety seed
-- [x] **D2** — `Usdc.sol` library + tests that fail on naive Ethereum ports
-- [ ] **D3** — Next.js + wagmi: wallet connect, single USDC balance
-- [ ] **D4** — Gas helper: 20 Gwei floor guard, fees displayed in USD
-- [ ] **D5** — `MemoPayment` example: pay USDC with an invoice ID via the predeployed Memo contract
-- [ ] **D6** — Mainnet deploy via CREATE2 + Blockscout verification
-- [ ] **D7** — `v0.1`: GitHub Template enabled, fork-to-ship README
-- [ ] **v0.2** (week 3) — batch pay via Multicall3From, `arc:pay` payment-request spec + QR, Permit2/ERC-20 revoke component, Playwright e2e + axe-core in CI, tokenlist
-- [ ] **v0.3** (week 4) — canonical EAS deployment on Arc, splits + transparent treasury example
+Addresses: [`deployments/addresses.json`](deployments/addresses.json).
 
-## Testing & accessibility
+### Why your Ethereum template will not work
 
-Contracts: Foundry (`yarn foundry:test`). Every UI component that lands in `packages/nextjs` from D3 onward ships with `data-testid` selectors and is scanned with axe-core **scoped to the component** at 390 px and 1440 px viewports; critical and serious violations block merge (WCAG 2.1/2.2 AA). Playwright e2e and the full CI pipeline arrive with v0.2.
+1. **USDC 18 vs 6 decimals — same funds.** Never mix `msg.value` with `balanceOf`. Never show two USDC rows.
+2. **20 Gwei floor.** Below it, txs are silently dropped.
+3. **Value to `address(0)` / blocklist / self-destruct burns revert** on Arc.
+4. **No onchain randomness** (`PREVRANDAO` = 0); finality &lt; 1s.
 
-## License
+Full reference: [Arc EVM differences](https://docs.arc.io/arc/references/evm-differences).
+
+### Roadmap
+
+- [x] D1 — Monorepo, Arc config, footguns README
+- [x] D2 — `Usdc.sol` + naive-port tests
+- [x] UI playground (Simonethg) for USDC math / fee floor
+- [ ] D3 — wagmi wallet + single USDC balance
+- [ ] D4 — gas helper in SDK
+- [ ] D5 — MemoPayment example
+- [ ] D6 — Mainnet CREATE2 + verify
+- [ ] D7 — v0.1 GitHub Template
+- [ ] v0.2 — batch pay, arc:pay, revoke, CI + axe
+- [ ] v0.3 — EAS + splits
+
+### Testing & accessibility
+
+- Contracts: `yarn foundry:test`
+- UI: `data-testid` primary; axe-core scoped to component at 390 px and 1440 px (critical/serious block merge). Automated axe CI arrives with v0.2.
+
+### License
 
 [MIT](LICENSE)
+
+**Powered by [AcademiaQA.com](https://academiaqa.com)**

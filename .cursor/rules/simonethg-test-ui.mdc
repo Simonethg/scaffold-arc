@@ -1,0 +1,79 @@
+---
+description: Every scaffold-arc feature ships branded Simonethg test UI + README (everyone/devs) + AcademiaQA credit + screenshots
+alwaysApply: true
+---
+
+# Simonethg test UI + README — mandatory for every deliverable
+
+## Rule
+
+Every feature, library, or onchain helper we ship in this repo **must** include:
+
+1. A simple manual test UI under `packages/nextjs`, branded as Simonethg.
+2. An updated README (root and any package README) that stays honest about what exists today.
+3. Screenshots in `docs/screenshots/` when there is a UI, referenced from the README.
+4. Footer/credit line: **Powered by [AcademiaQA.com](https://academiaqa.com)** in every README.
+
+No “library-only” days without a playground page (or an extension of an existing playground section).
+
+## Brand tokens (simonethg.com)
+
+Use CSS variables — do not invent a purple/indigo or terracotta theme:
+
+| Token | Value | Use |
+|---|---|---|
+| `--sg-bg` | `#F4F2EA` | Page background |
+| `--sg-ink` | `#0A0A0A` | Body text, headings |
+| `--sg-accent` | `#FFBC00` | Primary CTA, focus ring, highlights |
+| `--sg-accent-hover` | `#E6AD00` | Hover on primary |
+| `--sg-muted` | `#5A5E7A` | Secondary text (must still pass AA on `--sg-bg`) |
+| `--sg-surface` | `#FFFFFF` | Interactive panels only when needed |
+| Font display | **Baloo 2** | Brand mark, H1 |
+| Font body | **DM Sans** | UI copy, forms (readable; not Inter/Roboto/Arial/system) |
+
+Brand mark in the chrome: **Simonethg** linking to `https://simonethg.com`. Product name secondary: **scaffold-arc**.
+
+## UX / UI practices
+
+- One job per screen/section: one headline, one short supporting line, one primary action group.
+- Prefer open layout over card walls. Cards only when they contain an interaction (form, calculator, result).
+- Visible focus (`:focus-visible`) using `--sg-accent`. Touch targets ≥ 44×44 px (WCAG 2.5.5).
+- Primary selectors: `data-testid`. Aria roles secondary. Never rely on CSS class selectors for tests.
+- Copy in **Spanish** for the playground (audience LatAm) unless the surface is the public English README/docs for global builders.
+- Show fees and balances in **USD / USDC**, never raw Gwei as the only unit.
+- Single USDC balance in any wallet UI — never native + ERC-20 as two rows.
+
+## ADA (every UI change)
+
+- axe-core scan **scoped to the changed component**, viewports **390 px** and **1440 px**.
+- Critical / serious → block merge. Moderate / minor → document as observations.
+- Applicable: 1.4.3 contrast, 2.1.1 keyboard, 2.4.7 focus visible, 4.1.2 name/role/value, 2.5.5 target size, 2.5.3 label in name.
+- Code comments in English; user-facing playground strings in Spanish.
+
+## README format (every README)
+
+Always two sections, in this order:
+
+### Para todos (first)
+
+- What it is in plain language (Spanish or English matching the audience; root README can be English for global builders, with a short Spanish blurb if useful).
+- Screenshots of the UI under `docs/screenshots/` referenced in markdown.
+- Important functions explained without jargon.
+
+### Para developers (second)
+
+- Clone / yarn / forge test / yarn nextjs:dev — the fast path.
+- Keep the README updated with what actually exists today (checkboxes that match reality).
+
+### In ALL READMEs
+
+```markdown
+**Powered by [AcademiaQA.com](https://academiaqa.com)**
+```
+
+## Where UI lives
+
+- App: `packages/nextjs`
+- Shared brand CSS: `packages/nextjs/app/globals.css`
+- Each major feature gets a route or a clearly labeled section, e.g. `/playground/usdc`, `/playground/memo`
+- Screenshots: `docs/screenshots/`
