@@ -2,15 +2,15 @@
 
 **Powered by [AcademiaQA.com](https://academiaqa.com)**
 
-## Para todos
+## For everyone
 
-Pantalla de prueba de **scaffold-arc** — **muestra visual para equipos de producto**.
+Test screen for **scaffold-arc** — a **visual sample for product teams**.
 
-[Repo para developers](https://github.com/Simonethg/scaffold-arc).
+[Developer repo](https://github.com/Simonethg/scaffold-arc).
 
-En el header: mascota (sin nombre personal) + selector de idioma **solo con banderas**. Cinco locales:
+In the header: mascot (no personal name) + **flags-only** language switcher. Five locales:
 
-| Código | Idioma |
+| Code | Language |
 |---|---|
 | `en` | English |
 | `es` | Español (Argentina) 🇦🇷 |
@@ -18,33 +18,33 @@ En el header: mascota (sin nombre personal) + selector de idioma **solo con band
 | `zh` | 中文 |
 | `ar` | العربية (RTL) |
 
-Tres ejemplos educativos (traducidos: problema → mejora Arc → resultado en dólares):
+Three educational examples (translated: problem → Arc improvement → dollar result):
 
-1. **Un solo saldo USDC (no dos filas)** — en otras chains ves dos saldos; en Arc una sola fila en dólares (detalle técnico colapsado).
-2. **¿Te alcanzó el pago?** — el template de Ethereum acepta una fracción; Arc exige el monto completo.
-3. **Mandás un pago: ¿cuánto gas en dólares?** — gas en USDC (dólares previsibles); aviso si el precio queda bajo el mínimo de 20 Gwei.
+1. **One USDC balance (not two rows)** — other chains show two balances; on Arc one dollar row (technical detail collapsed).
+2. **Did the payment cover it?** — an Ethereum template accepts a fraction; Arc requires the full amount.
+3. **You send a payment: how much gas in dollars?** — gas in USDC (predictable dollars); warning if the price sits under the 20 Gwei floor.
 
-Capturas (desktop 1440 + móvil 390): ver [`docs/screenshots/`](../../docs/screenshots/).
+Screenshots (desktop 1440 + mobile 390): see [`docs/screenshots/`](../../docs/screenshots/).
 
-## Para developers
+## For developers
 
 ```bash
-# desde la raíz del monorepo
+# from the monorepo root
 yarn
 yarn nextjs:dev
 # http://localhost:3000
 ```
 
-Rutas:
+Routes:
 
-- `/` — playground USDC (casos de uso sueldo / factura / fee)
+- `/` — USDC playground (salary / invoice / fee use cases)
 
-i18n: `lib/i18n/` (dictionaries + `I18nProvider`). Brand CSS: `app/globals.css` (fallbacks CJK/Arabic documentados). Selectores: `data-testid` (`locale-switcher`, `brand-mascot`, …).
+i18n: `lib/i18n/` (dictionaries + `I18nProvider`). Brand CSS: `app/globals.css` (CJK/Arabic fallbacks documented). Selectors: `data-testid` (`locale-switcher`, `brand-mascot`, …).
 
-Regenerar capturas (con el dev server arriba):
+Regenerate screenshots (with the dev server running):
 
 ```bash
-npx playwright install chromium   # una vez
+npx playwright install chromium   # once
 yarn screenshots
 ```
 

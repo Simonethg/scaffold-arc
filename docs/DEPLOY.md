@@ -9,8 +9,8 @@
 ## Acuerdo
 
 1. No publicar hasta que ella diga algo inequívoco (“de acuerdo” / “deployá” / “está listo”).
-2. Al confirmar: publicar `packages/nextjs` bajo su web **www.simonethg.com** (o path/subdominio acordado) y dejar el link live en el README raíz → **Para todos**.
-3. Mantener el crédito AcademiaQA en el README.
+2. Al confirmar: publicar `packages/nextjs` bajo su web **www.simonethg.com** (o path/subdominio acordado) y dejar el link live en el README raíz → **For everyone**.
+3. Mantener el crédito AcademiaQA en el README (siempre en inglés).
 
 Regla Cursor: `.cursor/rules/simonethg-deploy-gate.mdc` (`alwaysApply`).
 

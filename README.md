@@ -4,28 +4,28 @@
 
 ---
 
-## Para todos
+## For everyone
 
-### Qué es (en lenguaje simple)
+### What it is (plain language)
 
-**scaffold-arc** es un kit de arranque para construir apps en [Arc](https://docs.arc.io/), la blockchain de Circle donde el gas se paga en **USDC** (dólares digitales), no en ETH.
+**scaffold-arc** is a starter kit for building apps on [Arc](https://docs.arc.io/), Circle’s blockchain where gas is paid in **USDC** (digital dollars), not ETH.
 
-Sumamos **helpers seguros de USDC** (evitan trampas de decimales y de gas) y un **playground de prueba**.
+We ship **safe USDC helpers** (they avoid decimal and gas footguns) plus a **test playground**.
 
-Si copiás un template de Ethereum “tal cual”, podés:
+If you copy an Ethereum template as-is, you can:
 
-- ver **el doble de dinero** en pantalla (porque USDC se muestra de dos formas que son el mismo saldo), o
-- mandar transacciones que **nunca aparecen** (porque Arc exige un mínimo de fee).
+- see **double money** on screen (because USDC shows up in two forms that are the same balance), or
+- send transactions that **never appear** (because Arc enforces a minimum fee).
 
-**Para producto:** el playground en `packages/nextjs` es solo una **muestra visual** — marca [Simonethg](https://simonethg.com) (mascota en el header, sin wordmark de nombre) — con ejemplos de fintech LatAm.
+**For product:** the playground in `packages/nextjs` is a **visual sample** only — [Simonethg](https://simonethg.com) branding (mascot in the header, no personal-name wordmark) — with LatAm fintech-style examples.
 
-**Para developers:** el código, tests y docs viven en el repo — [Repo para developers](https://github.com/Simonethg/scaffold-arc).
+**For developers:** code, tests, and docs live in the repo — [Developer repo](https://github.com/Simonethg/scaffold-arc).
 
-### Idiomas (selector de banderas)
+### Languages (flag switcher)
 
-En el header hay un switcher solo con banderas (`data-testid="locale-switcher"`). Locales:
+The header has a flags-only switcher (`data-testid="locale-switcher"`). Locales:
 
-| Código | Idioma |
+| Code | Language |
 |---|---|
 | `en` | English |
 | `es` | Español (Argentina) 🇦🇷 |
@@ -33,31 +33,31 @@ En el header hay un switcher solo con banderas (`data-testid="locale-switcher"`)
 | `zh` | 中文 |
 | `ar` | العربية (RTL) |
 
-El idioma se guarda en `localStorage`. Por defecto: `es` / `pt-BR` según el navegador, si no `en`.
+The choice is stored in `localStorage`. Defaults: `es` / `pt-BR` from the browser when applicable, otherwise `en`.
 
-### Capturas de la UI
+### UI screenshots
 
-Playground en `http://localhost:3000` (después de `yarn nextjs:dev`):
+Playground at `http://localhost:3000` (after `yarn nextjs:dev`):
 
-![Playground USDC — escritorio](docs/screenshots/playground-usdc-desktop.png)
+![USDC playground — desktop](docs/screenshots/playground-usdc-desktop.png)
 
-![Playground USDC — móvil](docs/screenshots/playground-usdc-mobile.png)
+![USDC playground — mobile](docs/screenshots/playground-usdc-mobile.png)
 
-> Si las imágenes aún no están en el clone, mirá [`docs/screenshots/README.md`](docs/screenshots/README.md) para regenerarlas (desktop 1440 + móvil 390).
+> If the images are missing in your clone, see [`docs/screenshots/README.md`](docs/screenshots/README.md) to regenerate them (desktop 1440 + mobile 390).
 
-### Casos de uso en el playground (sin jerga)
+### Playground use cases (no jargon)
 
-| Ejemplo en la UI | Qué aprendés |
+| UI example | What you learn |
 |---|---|
-| **Un solo saldo USDC (no dos filas)** | Problema: en Ethereum / templates ves dos saldos y parece doble plata. Mejora Arc: USDC nativo → **una sola fila** en dólares; no duplicás el dinero en pantalla. |
-| **¿Te alcanzó el pago?** | Problema: el template de Ethereum usa la escala equivocada y acepta una fracción (te quedás corto). Mejora Arc: compara el **monto completo** en USDC antes de dar el ok. |
-| **Mandás un pago: ¿cuánto gas en dólares?** | Problema: en otras chains el gas va en un token raro. Mejora Arc: el **costo de enviar** se muestra en **USDC / dólares**. Si el precio queda bajo el mínimo de 20 Gwei, la transacción puede desaparecer. |
+| **One USDC balance (not two rows)** | Problem: on Ethereum / templates you see two balances and it looks like double money. Arc fix: native USDC → **one dollar row**; don’t duplicate money on screen. |
+| **Did the payment cover it?** | Problem: an Ethereum template uses the wrong scale and accepts a tiny fraction (you come up short). Arc fix: compare the **full USDC amount** before saying OK. |
+| **You send a payment: how much gas in dollars?** | Problem: on other chains gas is paid in an unfamiliar token. Arc fix: the **send cost** is shown in **USDC / dollars**. If the price sits under the 20 Gwei floor, the transaction can vanish. |
 
-Hoy **no hace falta wallet**: es una calculadora de prueba. Conectar MetaMask llega en el siguiente entregable.
+No wallet required today — it’s a test calculator. MetaMask comes in the next deliverable.
 
 ---
 
-## Para developers
+## For developers
 
 ### Quickstart
 
@@ -67,7 +67,7 @@ Requirements: Node 20+, Yarn, [Foundry](https://getfoundry.sh).
 git clone https://github.com/Simonethg/scaffold-arc.git
 cd scaffold-arc
 yarn
-yarn foundry:test      # 17 tests Solidity
+yarn foundry:test      # 17 Solidity tests
 yarn nextjs:dev        # UI → http://localhost:3000
 ```
 

@@ -1,25 +1,25 @@
-# Capturas del playground
+# Playground screenshots
 
-Archivos actuales (casos de uso USDC + switcher de banderas i18n + mascota en header):
+Current files (USDC use cases + i18n flag switcher + mascot header):
 
 - `playground-usdc-desktop.png` — viewport 1440×900 (full page)
 - `playground-usdc-mobile.png` — viewport 390×844 (full page)
 
-## Cómo regenerarlas
+## How to regenerate
 
-1. En una terminal, desde la raíz del monorepo:
+1. In one terminal, from the monorepo root:
 
 ```bash
 yarn nextjs:dev
 ```
 
-2. En otra terminal (con el servidor en `http://localhost:3000`):
+2. In another terminal (with the server at `http://localhost:3000`):
 
 ```bash
-npx playwright install chromium   # una vez
+npx playwright install chromium   # once
 yarn screenshots
 ```
 
-El script [`scripts/capture-playground.mjs`](../../scripts/capture-playground.mjs) escribe ambos PNG en este directorio.
+The script [`scripts/capture-playground.mjs`](../../scripts/capture-playground.mjs) writes both PNGs into this directory.
 
-Referenciadas desde el README raíz y `packages/nextjs/README.md`.
+Referenced from the root README and `packages/nextjs/README.md`.
