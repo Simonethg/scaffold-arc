@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Baloo_2, DM_Sans } from "next/font/google";
+import { I18nProvider } from "@/lib/i18n/I18nProvider";
+import { SkipLink } from "./components/SkipLink";
 import "./globals.css";
 
 const baloo = Baloo_2({
@@ -17,14 +19,14 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "scaffold-arc · Playground USDC | Simonethg",
+  title: "scaffold-arc · Playground USDC",
   description:
-    "Casos de uso USDC en Arc: sueldo o factura en un solo saldo, template de Ethereum vs pago completo, y gas en dólares con piso de 20 Gwei.",
+    "USDC use cases on Arc: salary/invoice in one balance, Ethereum template vs full payment, gas in dollars with a 20 Gwei floor. Locales: en, es, pt-BR, zh, ar.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${baloo.variable} ${dmSans.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${baloo.variable} ${dmSans.variable}`}>
       <body
         style={
           {
@@ -33,10 +35,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           } as React.CSSProperties
         }
       >
-        <a className="skip-link" href="#contenido-principal" data-testid="skip-to-content">
-          Saltar al contenido
-        </a>
-        {children}
+        <I18nProvider>
+          <SkipLink />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

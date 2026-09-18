@@ -1,0 +1,39 @@
+---
+description: Playground UI must ship 5 locales (en, es, pt-BR, zh, ar) with accessible flag switcher + RTL for Arabic
+alwaysApply: true
+---
+
+# Multilenguaje playground — mandatory (alwaysApply)
+
+## Locales definitivos (ISO)
+
+Toda UI de playground / test bajo `packages/nextjs` **debe** incluir estos 5 idiomas:
+
+| Code | Language | Notes |
+|---|---|---|
+| `en` | English | Default when browser is not `es-*` / `pt-*` |
+| `es` | Español (Argentina) | Flag 🇦🇷 (not 🇪🇸). Default when browser is `es-*` |
+| `pt-BR` | Português (Brasil) | Default when browser is `pt-*` |
+| `zh` | 中文 (Simplified Mandarin) | CJK system font fallbacks |
+| `ar` | العربية | **RTL** — set `dir="rtl"` on `html` when active |
+
+Do **not** hardcode playground strings in a single language. Use dictionaries / message catalogs keyed by locale.
+
+## Language switcher
+
+- Visible in the site header.
+- **Flags only** (no visible language names in the UI chrome).
+- Each option: accessible `aria-label` (and optional `title`) with the language name, e.g. `Español (Argentina)`, `Português (Brasil)`. Locale `es` uses the **Argentina** flag (🇦🇷), never Spain (🇪🇸).
+- `data-testid="locale-switcher"` on the control group.
+- Keyboard operable, `:focus-visible` with `--sg-accent`, touch targets ≥ 44×44 px (WCAG 2.5.5).
+- Persist choice (`localStorage` or cookie). Sensible default: `es` if `es-*`, `pt-BR` if `pt-*`, else `en`.
+
+## Branding vs i18n
+
+- README “Para todos” may stay ES/EN for global builders; the **app** must be i18n.
+- Header logo: mascot image only (no personal name wordmark). Product name secondary: **scaffold-arc**.
+- Footer/credit: **Powered by [AcademiaQA.com](https://academiaqa.com)** still required in READMEs.
+
+## Fonts
+
+Keep Baloo 2 + DM Sans for Latin. For `zh` / `ar` (and any future CJK/RTL scripts), document system fallbacks in CSS so glyphs render without breaking brand tokens.

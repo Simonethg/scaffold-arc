@@ -4,7 +4,17 @@
 
 ## Para todos
 
-Pantalla de prueba de **scaffold-arc** con marca [Simonethg](https://simonethg.com). Tres historias en español:
+Pantalla de prueba de **scaffold-arc**. En el header: mascota (sin nombre personal) + selector de idioma **solo con banderas**. Cinco locales:
+
+| Código | Idioma |
+|---|---|
+| `en` | English |
+| `es` | Español (Argentina) 🇦🇷 |
+| `pt-BR` | Português (Brasil) |
+| `zh` | 中文 |
+| `ar` | العربية (RTL) |
+
+Tres historias (traducidas):
 
 1. **Te pagan o pagás en USDC** — sueldo, factura o café; un solo saldo en dólares.
 2. **¿Te alcanzó el pago?** — template de Ethereum vs pago completo en Arc.
@@ -25,7 +35,7 @@ Rutas:
 
 - `/` — playground USDC (casos de uso sueldo / factura / fee)
 
-Brand CSS: `app/globals.css`. Selectores de test: `data-testid`.
+i18n: `lib/i18n/` (dictionaries + `I18nProvider`). Brand CSS: `app/globals.css` (fallbacks CJK/Arabic documentados). Selectores: `data-testid` (`locale-switcher`, `brand-mascot`, …).
 
 Regenerar capturas (con el dev server arriba):
 

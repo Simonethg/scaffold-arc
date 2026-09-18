@@ -9,8 +9,17 @@
   --sg-border: #d8d4c8;
   --sg-danger: #9b1c1c;
   --sg-ok: #1a5c3a;
-  --font-display: "Baloo 2", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  /*
+   * Display / body: Baloo 2 + DM Sans (Latin branding).
+   * Fallbacks cover CJK (zh), Arabic (ar), and general Unicode without
+   * replacing the brand fonts for Latin scripts.
+   */
+  --font-display: "Baloo 2", "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
+    "Noto Sans Arabic", "Segoe UI Arabic", "Noto Naskh Arabic", system-ui,
+    sans-serif;
+  --font-body: "DM Sans", "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
+    "Noto Sans Arabic", "Segoe UI Arabic", "Noto Naskh Arabic", system-ui,
+    sans-serif;
 }
 
 *,
@@ -142,7 +151,7 @@ input[type="text"]:focus-visible {
 .site-header {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
   padding-bottom: 1.5rem;
@@ -150,17 +159,75 @@ input[type="text"]:focus-visible {
   margin-bottom: 1.75rem;
 }
 
-.brand-mark {
-  font-size: 1.5rem;
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
 }
 
-.brand-mark a {
+.brand-mascot-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   text-decoration: none;
+  border-radius: 8px;
+}
+
+.brand-mascot {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
 }
 
 .product-name {
   font-size: 0.95rem;
   color: var(--sg-muted);
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.locale-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.locale-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.35rem;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  line-height: 1;
+}
+
+.locale-flag:hover {
+  background: transparent;
+  border-color: var(--sg-border);
+}
+
+.locale-flag[aria-pressed="true"] {
+  border-color: var(--sg-ink);
+  background: var(--sg-surface);
+}
+
+.locale-flag-emoji {
+  font-size: 1.35rem;
+  line-height: 1;
 }
 
 .hero {
@@ -210,15 +277,15 @@ input[type="text"]:focus-visible {
   padding: 0.85rem 1rem;
   border-radius: 8px;
   background: var(--sg-bg);
-  border-left: 4px solid var(--sg-accent);
+  border-inline-start: 4px solid var(--sg-accent);
 }
 
 .result.bad {
-  border-left-color: var(--sg-danger);
+  border-inline-start-color: var(--sg-danger);
 }
 
 .result.good {
-  border-left-color: var(--sg-ok);
+  border-inline-start-color: var(--sg-ok);
 }
 
 .mono {
@@ -260,4 +327,9 @@ input[type="text"]:focus-visible {
 .skip-link:focus {
   left: 1rem;
   top: 1rem;
+}
+
+html[dir="rtl"] .skip-link:focus {
+  left: auto;
+  right: 1rem;
 }

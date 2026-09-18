@@ -39,16 +39,17 @@ Brand mark in the chrome: **Simonethg** linking to `https://simonethg.com`. Prod
 - Prefer open layout over card walls. Cards only when they contain an interaction (form, calculator, result).
 - Visible focus (`:focus-visible`) using `--sg-accent`. Touch targets ≥ 44×44 px (WCAG 2.5.5).
 - Primary selectors: `data-testid`. Aria roles secondary. Never rely on CSS class selectors for tests.
-- Copy in **Spanish** for the playground (audience LatAm) unless the surface is the public English README/docs for global builders.
+- Playground UI is **multilingual** — see `.cursor/rules/simonethg-i18n.mdc`: locales `en`, `es`, `pt-BR`, `zh`, `ar` (RTL). Flag-only switcher with `aria-label`s. Do not hardcode UI copy in one language.
 - Show fees and balances in **USD / USDC**, never raw Gwei as the only unit.
 - Single USDC balance in any wallet UI — never native + ERC-20 as two rows.
+- Header logo: **mascot image** only (`data-testid="brand-mascot"`), linking to simonethg.com — no personal name wordmark. Product name secondary: **scaffold-arc**.
 
 ## ADA (every UI change)
 
 - axe-core scan **scoped to the changed component**, viewports **390 px** and **1440 px**.
 - Critical / serious → block merge. Moderate / minor → document as observations.
 - Applicable: 1.4.3 contrast, 2.1.1 keyboard, 2.4.7 focus visible, 4.1.2 name/role/value, 2.5.5 target size, 2.5.3 label in name.
-- Code comments in English; user-facing playground strings in Spanish.
+- Code comments in English; user-facing playground strings via i18n dictionaries (not a single hard-coded language).
 
 ## README format (every README)
 

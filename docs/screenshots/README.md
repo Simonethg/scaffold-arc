@@ -1,6 +1,6 @@
 # Capturas del playground
 
-Archivos actuales (casos de uso USDC: sueldo / factura / gas en dólares):
+Archivos actuales (casos de uso USDC + switcher de banderas i18n + mascota en header):
 
 - `playground-usdc-desktop.png` — viewport 1440×900 (full page)
 - `playground-usdc-mobile.png` — viewport 390×844 (full page)

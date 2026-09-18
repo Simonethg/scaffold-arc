@@ -15,7 +15,21 @@ Si copiás un template de Ethereum “tal cual”, podés:
 - ver **el doble de dinero** en pantalla (porque USDC se muestra de dos formas que son el mismo saldo), o
 - mandar transacciones que **nunca aparecen** (porque Arc exige un mínimo de fee).
 
-Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** con historias de fintech LatAm — marca [Simonethg](https://simonethg.com).
+Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** con historias de fintech LatAm — marca [Simonethg](https://simonethg.com) (mascota en el header, sin wordmark de nombre).
+
+### Idiomas (selector de banderas)
+
+En el header hay un switcher solo con banderas (`data-testid="locale-switcher"`). Locales:
+
+| Código | Idioma |
+|---|---|
+| `en` | English |
+| `es` | Español (Argentina) 🇦🇷 |
+| `pt-BR` | Português (Brasil) |
+| `zh` | 中文 |
+| `ar` | العربية (RTL) |
+
+El idioma se guarda en `localStorage`. Por defecto: `es` / `pt-BR` según el navegador, si no `en`.
 
 ### Capturas de la UI
 
@@ -77,7 +91,7 @@ Solidity:
 - [`Usdc`](packages/foundry/src/Usdc.sol) — balances, transfer guards, fee math
 - [`NaiveEthereumPort`](packages/foundry/src/examples/NaiveEthereumPort.sol) — wrong patterns for tests only
 
-UI: [`packages/nextjs`](packages/nextjs) — Spanish playground, `data-testid`, brand tokens from simonethg.com.
+UI: [`packages/nextjs`](packages/nextjs) — i18n playground (`en` / `es` / `pt-BR` / `zh` / `ar`), flag switcher, mascot header, `data-testid`, brand tokens from simonethg.com.
 
 ### Network details
 
@@ -105,6 +119,7 @@ Full reference: [Arc EVM differences](https://docs.arc.io/arc/references/evm-dif
 - [x] D1 — Monorepo, Arc config, footguns README
 - [x] D2 — `Usdc.sol` + naive-port tests
 - [x] UI playground (Simonethg) for USDC math / fee floor
+- [x] i18n: `en`, `es`, `pt-BR`, `zh`, `ar` (RTL) + flag-only locale switcher
 - [ ] D3 — wagmi wallet + single USDC balance
 - [ ] D4 — gas helper in SDK
 - [ ] D5 — MemoPayment example
