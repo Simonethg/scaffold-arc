@@ -40,6 +40,7 @@ Brand mark in the chrome: **Simonethg** linking to `https://simonethg.com`. Prod
 - Visible focus (`:focus-visible`) using `--sg-accent`. Touch targets ≥ 44×44 px (WCAG 2.5.5).
 - Primary selectors: `data-testid`. Aria roles secondary. Never rely on CSS class selectors for tests.
 - Playground UI is **multilingual** — see `.cursor/rules/simonethg-i18n.mdc`: locales `en`, `es`, `pt-BR`, `zh`, `ar` (RTL). Flag-only switcher with `aria-label`s. Do not hardcode UI copy in one language.
+- Every playground **section/panel** must include a short Arc context blurb (i18n) plus links to official [Arc docs](https://docs.arc.io/) (`data-testid` on callout + primary link). Use the relevant guide per topic (e.g. `integrate/evm-differences`, `integrate/connect-to-arc`, `arc/references/gas-and-fees`). Where copy says “on Arc”, use the official Arc wordmark from `public/brand/` (`alt="Arc"`, `data-testid="arc-logo"`) via `{arcLogo}` in dictionaries — not plain “Arc” text in use-case chrome.
 - Show fees and balances in **USD / USDC**, never raw Gwei as the only unit.
 - Single USDC balance in any wallet UI — never native + ERC-20 as two rows.
 - Header logo: **mascot image** only (`data-testid="brand-mascot"`), linking to simonethg.com — no personal name wordmark. Product name secondary: **scaffold-arc**.

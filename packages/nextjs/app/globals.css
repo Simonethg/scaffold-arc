@@ -267,6 +267,46 @@ input[type="text"]:focus-visible {
   color: var(--sg-muted);
 }
 
+.hero-title-with-arc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+}
+
+.arc-logo-inline {
+  display: inline-block;
+  vertical-align: -0.15em;
+  height: 22px;
+  width: auto;
+  margin-inline: 0.12em 0.18em;
+}
+
+.hero-title-with-arc .arc-logo-inline {
+  height: clamp(26px, 3.5vw, 34px);
+  margin-inline: 0;
+}
+
+.arc-docs-callout {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--sg-border);
+  background: var(--sg-bg);
+}
+
+.arc-docs-links {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.arc-docs-links a {
+  font-weight: 600;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
 .panel {
   background: var(--sg-surface);
   border: 2px solid var(--sg-ink);

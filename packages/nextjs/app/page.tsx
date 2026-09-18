@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { UsdcPlayground } from "./components/UsdcPlayground";
 import { LocaleSwitcher } from "./components/LocaleSwitcher";
+import { ArcInlineText } from "./components/ArcInlineText";
 import { useI18n } from "@/lib/i18n/I18nProvider";
 
 export default function HomePage() {
@@ -48,7 +49,9 @@ export default function HomePage() {
 
       <main id="contenido-principal">
         <section className="product-intro" data-testid="product-intro" aria-label={t("productIntroLabel")}>
-          <p>{t("productIntroInfra")}</p>
+          <p>
+            <ArcInlineText text={t("productIntroInfra")} />
+          </p>
           <p>{t("productIntroAudience")}</p>
           <p>
             {t("productIntroRepoLead")}{" "}
@@ -64,8 +67,12 @@ export default function HomePage() {
         </section>
 
         <section className="hero" data-testid="hero">
-          <h1>{t("heroTitle")}</h1>
-          <p>{t("heroLede")}</p>
+          <h1 className="hero-title-with-arc">
+            <ArcInlineText text={t("heroTitle")} />
+          </h1>
+          <p>
+            <ArcInlineText text={t("heroLede")} />
+          </p>
         </section>
 
         <UsdcPlayground />
