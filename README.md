@@ -10,12 +10,16 @@
 
 **scaffold-arc** es un kit de arranque para construir apps en [Arc](https://docs.arc.io/), la blockchain de Circle donde el gas se paga en **USDC** (dólares digitales), no en ETH.
 
+Sumamos **helpers seguros de USDC** (evitan trampas de decimales y de gas) y un **playground de prueba**.
+
 Si copiás un template de Ethereum “tal cual”, podés:
 
 - ver **el doble de dinero** en pantalla (porque USDC se muestra de dos formas que son el mismo saldo), o
 - mandar transacciones que **nunca aparecen** (porque Arc exige un mínimo de fee).
 
-Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** con ejemplos de fintech LatAm — marca [Simonethg](https://simonethg.com) (mascota en el header, sin wordmark de nombre).
+**Para producto:** el playground en `packages/nextjs` es solo una **muestra visual** — marca [Simonethg](https://simonethg.com) (mascota en el header, sin wordmark de nombre) — con ejemplos de fintech LatAm.
+
+**Para developers:** el código, tests y docs viven en el repo — [Repo para developers](https://github.com/Simonethg/scaffold-arc).
 
 ### Idiomas (selector de banderas)
 

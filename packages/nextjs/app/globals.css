@@ -230,6 +230,33 @@ input[type="text"]:focus-visible {
   line-height: 1;
 }
 
+.product-intro {
+  margin-bottom: 1.75rem;
+  max-width: 40rem;
+}
+
+.product-intro p {
+  margin: 0 0 0.55rem;
+  color: var(--sg-muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.product-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.product-intro a {
+  font-weight: 600;
+  color: var(--sg-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.product-intro a:hover {
+  color: var(--sg-accent-hover);
+}
+
 .hero {
   margin-bottom: 2rem;
 }

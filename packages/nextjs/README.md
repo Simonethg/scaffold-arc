@@ -4,7 +4,9 @@
 
 ## Para todos
 
-Pantalla de prueba de **scaffold-arc**. En el header: mascota (sin nombre personal) + selector de idioma **solo con banderas**. Cinco locales:
+Pantalla de prueba de **scaffold-arc** — **muestra visual para equipos de producto**, no la guía de implementación. Los developers van al [repo](https://github.com/Simonethg/scaffold-arc).
+
+En el header: mascota (sin nombre personal) + selector de idioma **solo con banderas**. Cinco locales:
 
 | Código | Idioma |
 |---|---|

@@ -47,6 +47,22 @@ export default function HomePage() {
       </header>
 
       <main id="contenido-principal">
+        <section className="product-intro" data-testid="product-intro" aria-label={t("productIntroLabel")}>
+          <p>{t("productIntroInfra")}</p>
+          <p>{t("productIntroAudience")}</p>
+          <p>
+            {t("productIntroRepoLead")}{" "}
+            <a
+              href="https://github.com/Simonethg/scaffold-arc"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="repo-link-devs"
+            >
+              {t("repoLinkDevs")}
+            </a>
+          </p>
+        </section>
+
         <section className="hero" data-testid="hero">
           <h1>{t("heroTitle")}</h1>
           <p>{t("heroLede")}</p>
