@@ -22,3 +22,16 @@ packages/sdk/dist/
 .DS_Store
 .idea/
 *.log
+
+# AI / agent config — local only, never public GitHub
+.cursor/
+.claude/
+.codex/
+.continue/
+.windsurf/
+.aider*
+AGENTS.md
+CLAUDE.md
+.mcp.json
+.cursorignore
+*.mcp.json
