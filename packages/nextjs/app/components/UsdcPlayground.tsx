@@ -14,7 +14,6 @@ import {
 } from "@/lib/usdcMath";
 import { useI18n } from "@/lib/i18n/I18nProvider";
 import { ARC_DOCS } from "@/lib/arcDocs";
-import { ArcInlineText } from "./ArcInlineText";
 import { ArcDocsCallout } from "./ArcDocsCallout";
 
 const SCENARIO_IDS = [
@@ -71,9 +70,7 @@ export function UsdcPlayground() {
     <div data-testid="usdc-playground">
       <section className="panel" data-testid="panel-conversion" aria-labelledby="conv-title">
         <h2 id="conv-title">{t("convTitle")}</h2>
-        <p className="lede">
-          <ArcInlineText text={t("convLede")} />
-        </p>
+        <p className="lede">{t("convLede")}</p>
         <ArcDocsCallout
           testId="arc-docs-conversion"
           blurbKey="convArcDocsBlurb"
@@ -138,7 +135,7 @@ export function UsdcPlayground() {
             <details className="tech-details" data-testid="tech-details-balance">
               <summary>{t("techDetailsSummary")}</summary>
               <p className="muted" style={{ marginTop: "0.5rem", fontSize: "0.85rem" }}>
-                <ArcInlineText text={t("techDetailsBody")} />{" "}
+                {t("techDetailsBody")}{" "}
                 <span className="mono" data-testid="out-erc20">
                   {conversion.erc20.toString()}
                 </span>{" "}
@@ -156,13 +153,9 @@ export function UsdcPlayground() {
       <section className="panel" data-testid="panel-naive" aria-labelledby="naive-title">
         <h2 id="naive-title">{t("naiveTitle")}</h2>
         <p className="lede">
-          <ArcInlineText
-            text={
-              conversion.error
-                ? t("naiveLedeFallback")
-                : t("naiveLedeAmount", { amount: formatUsd(conversion.erc20) })
-            }
-          />
+          {conversion.error
+            ? t("naiveLedeFallback")
+            : t("naiveLedeAmount", { amount: formatUsd(conversion.erc20) })}
         </p>
         <ArcDocsCallout
           testId="arc-docs-naive"
@@ -189,9 +182,7 @@ export function UsdcPlayground() {
             </div>
             <div className="result good" data-testid="safe-result">
               <p>
-                <strong>
-                  <ArcInlineText text={t("naiveArcTitle")} />
-                </strong>
+                <strong>{t("naiveArcTitle")}</strong>
               </p>
               <p className="muted" style={{ fontSize: "0.9rem", marginTop: "0.35rem" }}>
                 {t("naiveArcBody")}
@@ -219,9 +210,7 @@ export function UsdcPlayground() {
 
       <section className="panel" data-testid="panel-fee" aria-labelledby="fee-title">
         <h2 id="fee-title">{t("feeTitle")}</h2>
-        <p className="lede">
-          <ArcInlineText text={t("feeLede")} />
-        </p>
+        <p className="lede">{t("feeLede")}</p>
         <ArcDocsCallout
           testId="arc-docs-fee"
           blurbKey="feeArcDocsBlurb"
@@ -259,9 +248,7 @@ export function UsdcPlayground() {
               aria-describedby="fee-floor-hint"
             />
             <p id="fee-floor-hint" className="muted" style={{ marginTop: "0.35rem", fontSize: "0.85rem" }}>
-              <ArcInlineText
-                text={t("feeFloorHint", { floor: MIN_MAX_FEE_PER_GAS_GWEI.toString() })}
-              />
+              {t("feeFloorHint", { floor: MIN_MAX_FEE_PER_GAS_GWEI.toString() })}
             </p>
           </div>
         </div>
@@ -278,7 +265,7 @@ export function UsdcPlayground() {
           </p>
           {fee.belowFloor ? (
             <p className="danger" style={{ marginTop: "0.5rem" }} data-testid="fee-floor-warning">
-              <ArcInlineText text={t("feeBelowFloor")} />
+              {t("feeBelowFloor")}
             </p>
           ) : (
             <p className="ok" style={{ marginTop: "0.5rem" }}>

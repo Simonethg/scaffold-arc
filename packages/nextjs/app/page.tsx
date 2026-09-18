@@ -49,9 +49,7 @@ export default function HomePage() {
 
       <main id="contenido-principal">
         <section className="product-intro" data-testid="product-intro" aria-label={t("productIntroLabel")}>
-          <p>
-            <ArcInlineText text={t("productIntroInfra")} />
-          </p>
+          <p>{t("productIntroInfra")}</p>
           <p>{t("productIntroAudience")}</p>
           <p>
             {t("productIntroRepoLead")}{" "}
@@ -70,9 +68,7 @@ export default function HomePage() {
           <h1 className="hero-title-with-arc">
             <ArcInlineText text={t("heroTitle")} />
           </h1>
-          <p>
-            <ArcInlineText text={t("heroLede")} />
-          </p>
+          <p>{t("heroLede")}</p>
         </section>
 
         <UsdcPlayground />
