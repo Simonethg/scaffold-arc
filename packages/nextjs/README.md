@@ -4,9 +4,13 @@
 
 ## Para todos
 
-Pantalla de prueba de **scaffold-arc** con marca [Simonethg](https://simonethg.com): convertís montos USDC, ves por qué un port ingenuo falla, y estimás fees en dólares.
+Pantalla de prueba de **scaffold-arc** con marca [Simonethg](https://simonethg.com). Tres historias en español:
 
-Capturas: ver [`docs/screenshots/`](../../docs/screenshots/).
+1. **Te pagan o pagás en USDC** — sueldo, factura o café; un solo saldo en dólares.
+2. **¿Te alcanzó el pago?** — template de Ethereum vs pago completo en Arc.
+3. **Mandás un pago: ¿cuánto gas?** — fee en USDC, con aviso si estás bajo el piso de 20 Gwei.
+
+Capturas (desktop 1440 + móvil 390): ver [`docs/screenshots/`](../../docs/screenshots/).
 
 ## Para developers
 
@@ -19,8 +23,15 @@ yarn nextjs:dev
 
 Rutas:
 
-- `/` — playground USDC (conversión, naive vs safe, fee 20 Gwei)
+- `/` — playground USDC (casos de uso sueldo / factura / fee)
 
 Brand CSS: `app/globals.css`. Selectores de test: `data-testid`.
+
+Regenerar capturas (con el dev server arriba):
+
+```bash
+npx playwright install chromium   # una vez
+yarn screenshots
+```
 
 **Powered by [AcademiaQA.com](https://academiaqa.com)**

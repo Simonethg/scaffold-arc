@@ -31,11 +31,11 @@ export default function HomePage() {
 
       <main id="contenido-principal">
         <section className="hero" data-testid="hero">
-          <h1>Probá los footguns de USDC en Arc</h1>
+          <h1>Casos de uso USDC en Arc</h1>
           <p>
-            Calculadora de prueba para la librería del scaffold: un solo saldo,
-            comparación ingenua vs segura, y fees en dólares con piso de 20
-            Gwei. Sin wallet todavía — eso llega en el siguiente entregable.
+            Tres historias de fintech LatAm: te pagan el sueldo, cobrás una
+            factura sin quedarte corto, y ves el gas en dólares. Un solo saldo
+            USDC. Sin wallet todavía — eso llega en el siguiente entregable.
           </p>
         </section>
 

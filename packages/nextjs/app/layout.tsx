@@ -19,7 +19,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "scaffold-arc · Playground USDC | Simonethg",
   description:
-    "Probá a mano los footguns de USDC en Arc: 18 vs 6 decimales, comparación ingenua vs segura, y fee con piso de 20 Gwei.",
+    "Casos de uso USDC en Arc: sueldo o factura en un solo saldo, template de Ethereum vs pago completo, y gas en dólares con piso de 20 Gwei.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

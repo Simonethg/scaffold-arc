@@ -15,7 +15,7 @@ Si copiás un template de Ethereum “tal cual”, podés:
 - ver **el doble de dinero** en pantalla (porque USDC se muestra de dos formas que son el mismo saldo), o
 - mandar transacciones que **nunca aparecen** (porque Arc exige un mínimo de fee).
 
-Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** para verificarlas a mano — con la marca [Simonethg](https://simonethg.com).
+Este repo documenta esas trampas, las prueba con código, y te da una **pantalla sencilla** con historias de fintech LatAm — marca [Simonethg](https://simonethg.com).
 
 ### Capturas de la UI
 
@@ -25,15 +25,15 @@ Playground en `http://localhost:3000` (después de `yarn nextjs:dev`):
 
 ![Playground USDC — móvil](docs/screenshots/playground-usdc-mobile.png)
 
-> Si las imágenes aún no están en el clone, mirá [`docs/screenshots/README.md`](docs/screenshots/README.md) para generarlas. La UI existe igual.
+> Si las imágenes aún no están en el clone, mirá [`docs/screenshots/README.md`](docs/screenshots/README.md) para regenerarlas (desktop 1440 + móvil 390).
 
-### Funciones importantes (sin jerga)
+### Casos de uso en el playground (sin jerga)
 
-| Qué ves en la UI | Para qué sirve |
+| Historia en la UI | Qué aprendés |
 |---|---|
-| **Monto en USDC** | Convierte “1 USDC” a las dos formas internas (6 y 18 decimales) y te recuerda mostrar **un solo saldo**. |
-| **Port ingenuo vs seguro** | Muestra por qué una comparación “estilo Ethereum” aceptaría un pago ridículamente chico. |
-| **Fee en USDC** | Estima el costo del gas en dólares y avisa si estás bajo el piso de **20 Gwei** (tx en limbo). |
+| **Te pagan o pagás en USDC** | Sueldo 50 USDC, factura 12,50 USDC o un café: un **solo saldo** en dólares. |
+| **¿Te alcanzó el pago?** | El template de Ethereum cree que alcanza con una fracción; en Arc te quedás corto si no convertís bien. |
+| **Mandás un pago: ¿cuánto gas?** | El fee se muestra en **USDC / dólares**. Debajo del piso de 20 Gwei la tx puede desaparecer. |
 
 Hoy **no hace falta wallet**: es una calculadora de prueba. Conectar MetaMask llega en el siguiente entregable.
 

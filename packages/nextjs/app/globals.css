@@ -201,6 +201,10 @@ input[type="text"]:focus-visible {
   align-items: center;
 }
 
+.row button.secondary {
+  flex: 0 1 auto;
+}
+
 .result {
   margin-top: 1rem;
   padding: 0.85rem 1rem;
