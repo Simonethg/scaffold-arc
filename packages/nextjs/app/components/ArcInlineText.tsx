@@ -5,7 +5,7 @@ import { ArcLogo } from "./ArcLogo";
 
 const ARC_LOGO_TOKEN = "{arcLogo}";
 
-/** Renders translated copy with `{arcLogo}` replaced by the official Arc wordmark. */
+/** Renders copy with `{arcLogo}` as the official Arc wordmark. Used only for `heroTitle`. */
 export function ArcInlineText({ text }: { text: string }) {
   if (!text.includes(ARC_LOGO_TOKEN)) {
     return <>{text}</>;
