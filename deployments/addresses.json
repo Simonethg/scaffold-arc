@@ -1,0 +1,78 @@
+{
+  "$comment": "Canonical contract addresses on Arc. Source: https://docs.arc.io/arc/references/contract-addresses (checked 2026-09-18). Predeployed contracts share the same address on mainnet and testnet unless noted. USDC has NO wrapped version on Arc: the native balance (18 decimals) and the ERC-20 interface (6 decimals) are the SAME funds.",
+  "chains": {
+    "arc": {
+      "chainId": 5042,
+      "rpc": "https://rpc.mainnet.arc.io",
+      "explorer": "https://explorer.arc.io",
+      "contracts": {
+        "USDC": {
+          "address": "0x3600000000000000000000000000000000000000",
+          "decimals": 6,
+          "note": "ERC-20 view over the native balance. Native gas accounting uses 18 decimals."
+        },
+        "EURC": {
+          "address": "0xbEf5f6d51CB62b58e6A8f77868681825C6fe21c1",
+          "decimals": 6
+        },
+        "Memo": {
+          "address": "0x5294E9927c3306DcBaDb03fe70b92e01cCede505",
+          "note": "Predeploy. Attaches memo metadata to calls; emits Memo events with a sequential index."
+        },
+        "Multicall3From": {
+          "address": "0x522fAf9A91c41c443c66765030741e4AaCe147D0",
+          "note": "Predeploy. Batches calls like Multicall3 but preserves the original msg.sender via the CallFrom precompile."
+        },
+        "Multicall3": {
+          "address": "0xcA11bde05977b3631167028862bE2a173976CA11"
+        },
+        "Permit2": {
+          "address": "0x000000000022D473030F116dDEE9F6B43aC78BA3"
+        },
+        "Create2Factory": {
+          "address": "0x4e59b44847b379578588920cA78FbF26c0B4956C",
+          "note": "Arachnid deterministic deployment proxy."
+        }
+      }
+    },
+    "arcTestnet": {
+      "chainId": 5042002,
+      "rpc": "https://rpc.testnet.arc.io",
+      "explorer": "https://testnet.arcscan.app",
+      "faucet": "https://faucet.circle.com",
+      "contracts": {
+        "USDC": {
+          "address": "0x3600000000000000000000000000000000000000",
+          "decimals": 6,
+          "note": "ERC-20 view over the native balance. Native gas accounting uses 18 decimals."
+        },
+        "EURC": {
+          "address": "0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a",
+          "decimals": 6
+        },
+        "Memo": {
+          "address": "0x5294E9927c3306DcBaDb03fe70b92e01cCede505",
+          "note": "Predeploy. Attaches memo metadata to calls; emits Memo events with a sequential index."
+        },
+        "Multicall3From": {
+          "address": "0x522fAf9A91c41c443c66765030741e4AaCe147D0",
+          "note": "Predeploy. Batches calls like Multicall3 but preserves the original msg.sender via the CallFrom precompile."
+        },
+        "Multicall3": {
+          "address": "0xcA11bde05977b3631167028862bE2a173976CA11"
+        },
+        "Permit2": {
+          "address": "0x000000000022D473030F116dDEE9F6B43aC78BA3"
+        },
+        "Create2Factory": {
+          "address": "0x4e59b44847b379578588920cA78FbF26c0B4956C",
+          "note": "Arachnid deterministic deployment proxy."
+        },
+        "BlocklistedTestAddress": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "note": "Testnet-seeded blocklisted address (index 1 of the standard test mnemonic). Use it to exercise runtime value-transfer reverts."
+        }
+      }
+    }
+  }
+}

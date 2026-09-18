@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Foundry
+packages/foundry/out/
+packages/foundry/cache/
+packages/foundry/broadcast/
+
+# Next.js (arrives on D3)
+packages/nextjs/.next/
+packages/nextjs/out/
+
+# SDK build output (arrives on D2+)
+packages/sdk/dist/
+
+# Environment — never commit keys
+.env
+.env.local
+.env.*.local
+
+# Editor / OS noise
+.DS_Store
+.idea/
+*.log

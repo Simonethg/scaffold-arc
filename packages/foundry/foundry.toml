@@ -1,0 +1,36 @@
+# scaffold-arc Foundry config — tuned for Arc (Circle's L1, USDC-native gas).
+#
+# Arc targets the Osaka EVM baseline. Most contracts deploy unchanged, but
+# read the "Why your Ethereum template will not work" section of the root
+# README before porting anything that touches USDC balances or native value.
+
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+# Arc runs the Osaka hard fork as its execution baseline.
+evm_version = "osaka"
+
+# IMPORTANT (Arc footgun #2): the Arc mempool enforces a 20 Gwei floor on
+# maxFeePerGas. Transactions below the floor are silently dropped — no error
+# receipt, never included. Always pass at least:
+#   --with-gas-price 20gwei
+# or set gas price explicitly in scripts. See README > Footguns.
+
+[rpc_endpoints]
+# Public endpoints. Override with a provider URL (Alchemy, QuickNode,
+# Blockdaemon, dRPC) via .env if you need higher rate limits.
+arc_testnet = "https://rpc.testnet.arc.io"
+arc_mainnet = "https://rpc.mainnet.arc.io"
+
+[fmt]
+line_length = 100
+tab_width = 4
+bracket_spacing = false
+
+# Contract verification: the Arc explorers run Blockscout.
+#   forge verify-contract <ADDRESS> <CONTRACT> \
+#     --chain-id 5042002 \
+#     --verifier blockscout \
+#     --verifier-url https://testnet.arcscan.app/api/
+# Mainnet: --chain-id 5042 --verifier-url https://explorer.arc.io/api/

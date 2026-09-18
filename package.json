@@ -1,0 +1,32 @@
+{
+  "name": "scaffold-arc",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Forkable starter for building on Arc — Circle's L1 where USDC is the native gas token. Your Ethereum template will not survive here unchanged.",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "foundry:build": "forge build --root packages/foundry",
+    "foundry:test": "forge test --root packages/foundry -vv",
+    "test": "yarn foundry:test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Simonethg/scaffold-arc"
+  },
+  "keywords": [
+    "arc",
+    "circle",
+    "usdc",
+    "foundry",
+    "scaffold",
+    "evm",
+    "stablecoin"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "yarn@1.22.22"
+}

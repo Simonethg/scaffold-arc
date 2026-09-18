@@ -1,0 +1,6 @@
+{
+  "name": "@scaffold-arc/nextjs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Next.js frontend for scaffold-arc. Arrives on D3: wallet connect with a SINGLE USDC balance (native 18d and ERC-20 6d are the same funds) and gas estimates shown in USD."
+}

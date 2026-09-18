@@ -1,0 +1,6 @@
+{
+  "name": "@scaffold-arc/sdk",
+  "version": "0.0.1",
+  "private": true,
+  "description": "TypeScript helpers for Arc. Arrives on D2+: parseUsdc (18d/6d safe), gas floor guard (20 Gwei), fee-in-USD estimation, Memo encoding, and the arc:pay payment request spec."
+}
