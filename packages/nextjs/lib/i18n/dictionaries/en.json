@@ -5,7 +5,7 @@
   "brandMascotAlt": "Simonethg mascot — go to simonethg.com",
   "productIntroLabel": "What’s in scaffold-arc",
   "productIntroInfra": "We added safe USDC helpers for Arc — they avoid decimal and gas footguns — plus this test playground.",
-  "productIntroAudience": "This is only a visual sample for product teams, not for developers.",
+  "productIntroAudience": "This is only a visual sample for product teams.",
   "productIntroRepoLead": "Developers go straight to the code here:",
   "repoLinkDevs": "Repo for developers",
   "heroTitle": "USDC use cases on Arc",

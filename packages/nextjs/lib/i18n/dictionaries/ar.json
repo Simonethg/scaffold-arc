@@ -5,7 +5,7 @@
   "brandMascotAlt": "تميمة Simonethg — الانتقال إلى simonethg.com",
   "productIntroLabel": "ما يوجد في scaffold-arc",
   "productIntroInfra": "أضفنا مكتبات مساعدة آمنة لـ USDC على Arc — تتجنب فخاخ الكسور العشرية ورسوم الغاز — مع ساحة الاختبار هذه.",
-  "productIntroAudience": "هذه مجرد عيّنة بصرية لفرق المنتج، وليست للمطوّرين.",
+  "productIntroAudience": "هذه مجرد عيّنة بصرية لفرق المنتج.",
   "productIntroRepoLead": "المطوّرون يراجعون الكود هنا:",
   "repoLinkDevs": "مستودع للمطوّرين",
   "heroTitle": "حالات استخدام USDC على Arc",
