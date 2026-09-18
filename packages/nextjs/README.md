@@ -18,11 +18,11 @@ En el header: mascota (sin nombre personal) + selector de idioma **solo con band
 | `zh` | 中文 |
 | `ar` | العربية (RTL) |
 
-Tres ejemplos (traducidos):
+Tres ejemplos educativos (traducidos: problema → mejora Arc → resultado en dólares):
 
-1. **Te pagan o pagás en USDC** — sueldo, factura o café; un solo saldo en dólares.
-2. **¿Te alcanzó el pago?** — template de Ethereum vs pago completo en Arc.
-3. **Mandás un pago: ¿cuánto gas en dólares?** — costo de enviar la transacción en USDC; aviso si el precio del gas queda bajo el mínimo de 20 Gwei.
+1. **Un solo saldo USDC (no dos filas)** — en otras chains ves dos saldos; en Arc una sola fila en dólares (detalle técnico colapsado).
+2. **¿Te alcanzó el pago?** — el template de Ethereum acepta una fracción; Arc exige el monto completo.
+3. **Mandás un pago: ¿cuánto gas en dólares?** — gas en USDC (dólares previsibles); aviso si el precio queda bajo el mínimo de 20 Gwei.
 
 Capturas (desktop 1440 + móvil 390): ver [`docs/screenshots/`](../../docs/screenshots/).
 

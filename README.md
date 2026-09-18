@@ -49,9 +49,9 @@ Playground en `http://localhost:3000` (después de `yarn nextjs:dev`):
 
 | Ejemplo en la UI | Qué aprendés |
 |---|---|
-| **Te pagan o pagás en USDC** | Sueldo 50 USDC, factura 12,50 USDC o un café: un **solo saldo** en dólares. |
-| **¿Te alcanzó el pago?** | El template de Ethereum cree que alcanza con una fracción; en Arc te quedás corto si no convertís bien. |
-| **Mandás un pago: ¿cuánto gas en dólares?** | El **costo de enviar** la transacción se muestra en **USDC / dólares**. Si el precio del gas queda bajo el mínimo de 20 Gwei, la transacción puede desaparecer sin confirmación. |
+| **Un solo saldo USDC (no dos filas)** | Problema: en Ethereum / templates ves dos saldos y parece doble plata. Mejora Arc: USDC nativo → **una sola fila** en dólares; no duplicás el dinero en pantalla. |
+| **¿Te alcanzó el pago?** | Problema: el template de Ethereum usa la escala equivocada y acepta una fracción (te quedás corto). Mejora Arc: compara el **monto completo** en USDC antes de dar el ok. |
+| **Mandás un pago: ¿cuánto gas en dólares?** | Problema: en otras chains el gas va en un token raro. Mejora Arc: el **costo de enviar** se muestra en **USDC / dólares**. Si el precio queda bajo el mínimo de 20 Gwei, la transacción puede desaparecer. |
 
 Hoy **no hace falta wallet**: es una calculadora de prueba. Conectar MetaMask llega en el siguiente entregable.
 

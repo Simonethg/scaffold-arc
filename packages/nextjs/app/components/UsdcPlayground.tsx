@@ -121,16 +121,22 @@ export function UsdcPlayground() {
               </strong>
             </p>
             <p className="muted" style={{ marginTop: "0.5rem", fontSize: "0.9rem" }}>
-              {t("balanceHintBefore")}{" "}
-              <span className="mono" data-testid="out-erc20">
-                {conversion.erc20.toString()}
-              </span>{" "}
-              {t("balanceHintAnd")}{" "}
-              <span className="mono" data-testid="out-native">
-                {conversion.native.toString()}
-              </span>{" "}
-              {t("balanceHintAfter")}
+              {t("balanceOneRow")}
             </p>
+            <details className="tech-details" data-testid="tech-details-balance">
+              <summary>{t("techDetailsSummary")}</summary>
+              <p className="muted" style={{ marginTop: "0.5rem", fontSize: "0.85rem" }}>
+                {t("techDetailsBody")}{" "}
+                <span className="mono" data-testid="out-erc20">
+                  {conversion.erc20.toString()}
+                </span>{" "}
+                {t("balanceHintAnd")}{" "}
+                <span className="mono" data-testid="out-native">
+                  {conversion.native.toString()}
+                </span>
+                .
+              </p>
+            </details>
           </div>
         )}
       </section>

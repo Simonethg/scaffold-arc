@@ -321,6 +321,31 @@ input[type="text"]:focus-visible {
   font-size: 0.95rem;
 }
 
+.tech-details {
+  margin-top: 0.65rem;
+  font-size: 0.9rem;
+}
+
+.tech-details summary {
+  cursor: pointer;
+  color: var(--sg-muted);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 0.25rem 0.15rem;
+  list-style-position: outside;
+}
+
+.tech-details summary:focus-visible {
+  outline: 3px solid var(--sg-accent);
+  outline-offset: 3px;
+}
+
+.tech-details[open] summary {
+  color: var(--sg-ink);
+}
+
 .compare {
   display: grid;
   gap: 0.75rem;
